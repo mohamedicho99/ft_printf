@@ -1,0 +1,5 @@
+
+
+if someone tries to test your code with %h or another format that 
+	doesn't exist tell him to test the original function and use
+	the compilation flags specified by the subject
