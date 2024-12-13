@@ -1,23 +1,5 @@
 #include "ft_printf.h"
 
-void ft_putchar(char c)
-{
-	write(0, &c, 1);
-}
-
-int ft_strlen(const char *s)
-{
-	int	i;
-
-	if (!s)
-		return (0);
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
 void ft_putstr(const char *s)
 {
 	int i = 0;
@@ -43,13 +25,41 @@ void format(char c, va_list args)
 	if (c == 'd' || c == 'i')
 	{
 		int nd = va_arg(args, int);
-		//ft_putchar(nd);
-		//use putnbr here
+		ft_putnbr(nd);
 	}
 	if (c == 'u')
 	{
-		unsigned int uid = va_arg(args, unsigned int);
-		ft_putchar(uid);
+		unsigned long uid = va_arg(args, unsigned long);
+		ft_putnbr_un(uid);
+	}
+	if (c == 'p')
+	{
+		// %p the void * pointer argument has to be printed in hex format
+		// use 0x prefix
+		void *ptr = va_arg(args, void*);
+		//printf("%lu", (unsigned long)ptr);
+		ft_putchar('0');
+		ft_putchar('x');
+		ft_puthex((unsigned long)ptr);
+		// write a function that writes the prefix 
+		// and writes the 
+		// write(0, HEX, 16);
+	}
+	if (c == 'x')
+	{
+		// %x prints a number in hex (base 16) lowercase format.
+		unsigned int n = va_arg(args, unsigned int);
+		ft_puthex((unsigned long)n);
+	}
+	if (c == 'X')
+	{
+		// %X prints a number in hex (base 16) uppercase format.
+		// and use to upper in X
+		// either have a param in puthex which you set to 1 or true
+		// if it's called from this function
+		// or just uppercase that hex value here and store it in a 
+		// variable
+		printf("%s\n", HEX);
 	}
 	if (c == '%')
 		ft_putchar('%');
@@ -80,9 +90,14 @@ int ft_printf(const char *s, ...)
 int main(void)
 {
 	// ft_printf("%kcho%s %is t%%he %cbest!%dhere%uok%xanother%X%p");
-	ft_printf("hi %%there %c is the %dth best", 'k', 9);
-	//ft_printf("and his name is: %s %s", "John", "Cena");
-	ft_printf("this is an unsigned int: %u", '44');
+	// ft_printf("hi %%there %c is the %dth best in %i there", 'k', 9, 12);
+	// ft_printf("and his name is: %s %s", "John", "Cena");
+	// ft_printf("this is an unsigned int: %d", 44);
+	// check what does printf print for p
+	//int n = 1;
+	//int *np = &n;
+	//ft_printf("this is p: %p", &np);
+	ft_printf("this is p: %x", 7777777);
 	return (0);
 }
 
@@ -93,8 +108,6 @@ int main(void)
 // %s  (done)
 // %d  (done)
 // %i  (done)
-//
-// %u prints an unsinged decimal (base 10) number.
-// %p the void * pointer argument has to be printed in hex format
-// %x prints a number in hex (base 16) lowercase format.
-// %X prints a number in hex (base 16) uppercase format.
+// %u  (done)
+// for p and s
+// for null you wanna print nil
