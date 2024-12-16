@@ -37,19 +37,13 @@ void format(char c, va_list args)
 		// %p the void * pointer argument has to be printed in hex format
 		// use 0x prefix
 		void *ptr = va_arg(args, void*);
-		//printf("%lu", (unsigned long)ptr);
-		ft_putchar('0');
-		ft_putchar('x');
-		ft_puthex((unsigned long)ptr);
-		// write a function that writes the prefix 
-		// and writes the 
-		// write(0, HEX, 16);
+		ft_puthex((unsigned long)ptr, 2);
 	}
 	if (c == 'x')
 	{
 		// %x prints a number in hex (base 16) lowercase format.
 		unsigned int n = va_arg(args, unsigned int);
-		ft_puthex((unsigned long)n);
+		ft_puthex((unsigned long)n, 0);
 	}
 	if (c == 'X')
 	{
@@ -59,7 +53,9 @@ void format(char c, va_list args)
 		// if it's called from this function
 		// or just uppercase that hex value here and store it in a 
 		// variable
-		printf("%s\n", HEX);
+		unsigned int n = va_arg(args, unsigned int);
+		ft_puthex((unsigned long)n, 1);
+		//printf("%s\n", HEX);
 	}
 	if (c == '%')
 		ft_putchar('%');
@@ -97,7 +93,7 @@ int main(void)
 	//int n = 1;
 	//int *np = &n;
 	//ft_printf("this is p: %p", &np);
-	ft_printf("this is p: %x", 7777777);
+	ft_printf("this is p: %X", 7777777);
 	return (0);
 }
 
