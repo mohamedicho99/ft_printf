@@ -3,3 +3,13 @@ a good programming practice is to:
 	confirm that each step of the way works as expected!
 	and if it does... you can move on to the next step!
 
+TODO: don't forget to set any unused function to static
+
+TODO: project checklist for evals
+	check if unused functions are set to static
+
+__________________
+
+moto: 
+who dare wins!!!
+glory awaits those who dare!

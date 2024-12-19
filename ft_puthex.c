@@ -1,25 +1,19 @@
 #include "ft_printf.h"
 
-// this function may actually be used to handle
-// x, X and p
-// one more variable called gate to specify which 
-// condition triggerd it and voila
-// if gate is 0 just print x
-// 1 for X and 2 for p
-// for p a little function to add prefix may be required 
-// and for X, one to to make/write the HEX to uppercase
-void wprefix()
+static void wprefix(int *counter)
 {
-	write(0, "0x", 2);
+	write(1, "0x", 2);
+	*counter += 2;
 }
 
-void ft_puthex(unsigned long n, int gate)
+void ft_puthex(unsigned long n, int gate, int *counter)
 {
 	char *num;
 	size_t num_len;
-	int i = 0;
-	
-	num = ft_calloc(sizeof(char), 17);
+	int i;
+
+	// why use 17 and not the number of digits unsigned long can have
+	num = ft_calloc(sizeof(char), 21);
 	if (!num)
 		return ;
 	i = 0;
@@ -31,15 +25,16 @@ void ft_puthex(unsigned long n, int gate)
 	}
 	num_len = ft_strlen(num);
 	if (gate == 2)
-		wprefix();
+		wprefix(counter);
 	while (num_len--)
 	{
 		if (gate == 1)
 		{
 			if (num[num_len] >= 97 && num[num_len] <= 122)
-				ft_putchar(num[num_len] - 32);
+				ft_putchar(num[num_len] - 32, counter);
 		}
-		ft_putchar(num[num_len]);
+		if ((num[num_len] >= 48 && num[num_len] <= 57) || gate != 1)
+			ft_putchar(num[num_len], counter);
 	}
 	free(num);
 }
