@@ -5,27 +5,58 @@ static void wprefix(int *counter)
 	write(1, "0x", 2);
 	*counter += 2;
 }
+// TODO:
+// you may wanna have a put_pointer function that calls
+// puthex and write prifix
+// remove the conversion of hex to uppercase and just 
+// create another var for uppercase
+// don't forget to handle null on pointer
 
-void ft_puthex(unsigned long n, int gate, int *counter)
+void ft_putptr(unsigned long n, int *counter)
+{
+	wprefix(counter);
+	ft_puthex(n, 'x', counter);
+}
+
+void ft_strcpy(char *src, char *dst)
+{
+	if (!src || !dst)
+		return ;
+	int i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+}
+
+void ft_puthex(unsigned long n, char con, int *counter)
 {
 	char *num;
 	size_t num_len;
 	int i;
-
-	// why use 17 and not the number of digits unsigned long can have
+	char hex[17];
+	
+	ft_strcpy("0123456789abcdef", hex);
+	if (con == 'X')
+		ft_strcpy("0123456789ABCDEF", hex);
+	
 	num = ft_calloc(sizeof(char), 21);
 	if (!num)
 		return ;
 	i = 0;
 	while (n && i < 16)
 	{
-		num[i] = HEX[n % 16];
+		num[i] = hex[n % 16];
 		n /= 16;
 		i++;
 	}
 	num_len = ft_strlen(num);
-	if (gate == 2)
-		wprefix(counter);
+	while (num_len--)
+		ft_putchar(num[num_len], counter);
+
+	/*
 	while (num_len--)
 	{
 		if (gate == 1)
@@ -36,6 +67,7 @@ void ft_puthex(unsigned long n, int gate, int *counter)
 		if ((num[num_len] >= 48 && num[num_len] <= 57) || gate != 1)
 			ft_putchar(num[num_len], counter);
 	}
+	*/
 	free(num);
 }
 /*

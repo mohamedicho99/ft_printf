@@ -48,17 +48,17 @@ static void format(char c, va_list args, int *counter)
 	if (c == 'p')
 	{
 		void *ptr = va_arg(args, void*);
-		ft_puthex((unsigned long)ptr, 2, counter);
+		ft_putptr((unsigned long)ptr, counter);
 	}
 	if (c == 'x')
 	{
 		unsigned int n = va_arg(args, unsigned int);
-		ft_puthex((unsigned long)n, 0, counter);
+		ft_puthex((unsigned long)n, 'x', counter);
 	}
 	if (c == 'X')
 	{
 		unsigned int n = va_arg(args, unsigned int);
-		ft_puthex((unsigned long)n, 1, counter);
+		ft_puthex((unsigned long)n, 'X', counter);
 	}
 	if (c == '%')
 		ft_putchar('%', counter);
