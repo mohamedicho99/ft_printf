@@ -1,7 +1,6 @@
 #include "ft_printf.h"
 
-
-void ft_putnbr(long n, int *counter)
+void	ft_putnbr(long n, int *counter)
 {
 	if (n < 0)
 	{

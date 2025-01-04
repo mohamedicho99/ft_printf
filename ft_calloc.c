@@ -1,10 +1,11 @@
+
 #include "ft_printf.h"
 
-void ft_bzero(void *s, size_t n)
+static void	ft_bzero(void *s, size_t n)
 {
-	unsigned char *ptr;
-	unsigned char c;
-	size_t i;
+	unsigned char	*ptr;
+	unsigned char	c;
+	size_t			i;
 
 	ptr = (unsigned char *)s;
 	c = 0;
@@ -16,16 +17,12 @@ void ft_bzero(void *s, size_t n)
 	}
 }
 
-
-void *ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void *space;
-	size_t total_len;
+	void	*space;
+	size_t	total_len;
 
 	total_len = nmemb * size;
-	// 5 * 10
-	// total_len = 50 
-	// if size != 0 && 50 / 10 != 5
 	if (size != 0 && total_len / size != nmemb)
 		return (NULL);
 	space = malloc(total_len);
