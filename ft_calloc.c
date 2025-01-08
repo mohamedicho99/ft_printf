@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohel-mo <mohel-mo@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/22 06:07:14 by mohel-mo          #+#    #+#             */
+/*   Updated: 2025/01/08 03:52:31 by mohel-mo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void ft_bzero(void *s, size_t n)
+static void	ft_bzero(void *s, size_t n)
 {
-	unsigned char *ptr;
-	unsigned char c;
-	size_t i;
+	unsigned char	*ptr;
+	unsigned char	c;
+	size_t			i;
 
 	ptr = (unsigned char *)s;
 	c = 0;
@@ -16,10 +28,10 @@ void ft_bzero(void *s, size_t n)
 	}
 }
 
-void *ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void *space;
-	size_t total_len;
+	void	*space;
+	size_t	total_len;
 
 	total_len = nmemb * size;
 	if (size != 0 && total_len / size != nmemb)

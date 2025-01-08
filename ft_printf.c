@@ -1,53 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohel-mo <mohel-mo@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/22 06:07:01 by mohel-mo          #+#    #+#             */
+/*   Updated: 2025/01/08 03:51:51 by mohel-mo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static void handle_sac(char c, va_list args, int *counter)
+static void	handle_sac(char c, va_list args, int *counter)
 {
+	char	*s;
+	char	nc;
+
 	if (c == 's')
 	{
-		char *s = va_arg(args, char*);
+		s = va_arg(args, char *);
 		ft_putstr(s, counter);
 	}
 	if (c == 'c')
 	{
-		char nc = va_arg(args, int);
+		nc = va_arg(args, int);
 		ft_putchar(nc, counter);
 	}
 }
 
-static void handle_nums(char c, va_list args, int *counter)
+static void	handle_nums(char c, va_list args, int *counter)
 {
+	int				nd;
+	unsigned long	uid;
+
 	if (c == 'd' || c == 'i')
 	{
-		int nd = va_arg(args, int);
+		nd = va_arg(args, int);
 		ft_putnbr(nd, counter);
 	}
 	if (c == 'u')
 	{
-		unsigned long uid = va_arg(args, unsigned long);
+		uid = va_arg(args, unsigned long);
 		ft_putnbr_un(uid, counter);
 	}
 }
 
-static void handle_pahex(char c, va_list args, int *counter)
+static void	handle_pahex(char c, va_list args, int *counter)
 {
+	void			*ptr;
+	unsigned int	n;
+
 	if (c == 'p')
 	{
-		void *ptr = va_arg(args, void*);
+		ptr = va_arg(args, void *);
 		ft_putptr((unsigned long)ptr, counter);
 	}
 	if (c == 'x')
 	{
-		unsigned int n = va_arg(args, unsigned int);
+		n = va_arg(args, unsigned int);
 		ft_puthex((unsigned long)n, 'x', counter);
 	}
 	if (c == 'X')
 	{
-		unsigned int n = va_arg(args, unsigned int);
+		n = va_arg(args, unsigned int);
 		ft_puthex((unsigned long)n, 'X', counter);
 	}
 }
 
-static void format(char c, va_list args, int *counter)
+static void	format(char c, va_list args, int *counter)
 {
 	handle_sac(c, args, counter);
 	handle_nums(c, args, counter);
@@ -56,10 +77,11 @@ static void format(char c, va_list args, int *counter)
 		ft_putchar('%', counter);
 }
 
-int ft_printf(const char *s, ...)
+int	ft_printf(const char *s, ...)
 {
-	va_list args;
-	int		(counter), (i);
+	va_list	args;
+	int		counter;
+	int		i;
 
 	va_start(args, s);
 	counter = 0;
@@ -82,21 +104,4 @@ int ft_printf(const char *s, ...)
 	}
 	va_end(args);
 	return (counter);
-}
-
-int main(void)
-{
-	char r = 'r';
-	ft_printf("d number:\t%d\n", -84);
-	ft_printf("i number:\t%i\n", 55);
-	ft_printf("u number:\t%u\n", -44);
-	ft_printf("character:\t%c\n", r);
-	ft_printf("pointer:\t%p\n", &r);
-	ft_printf("string:\t\t%s\n", "icho ahmed");
-	ft_printf("percent:\t%%\n");
-	//ft_printf("again percent:\t%\n");
-	ft_printf("hex:\t\t%p\n", 1551324);
-	ft_printf("HEX:\t\t%X\n", 1551324);
-
-	return (0);
 }

@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 CC = cc
 HEADER = ft_printf.h
-SRC = ft_printf.c ft_puthex.c ft_strlen.c ft_putchar.c ft_calloc.c \
+SRC = ft_printf.c ft_hexutils.c ft_strlen.c ft_putchar.c ft_calloc.c \
 	  ft_putnbr.c ft_putnbr_un.c ft_putstr.c
 FLAGS = -Werror -Wextra -Wall
 OBJ = $(SRC:.c=.o)
