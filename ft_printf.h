@@ -1,31 +1,20 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mohel-mo <mohel-mo@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 06:07:32 by mohel-mo          #+#    #+#             */
-/*   Updated: 2025/01/08 03:53:20 by mohel-mo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#define FT_PRINTF_H
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdarg.h>
+#include <stdlib.h>
 
-int		ft_printf(const char *s, ...);
-void	ft_putnbr(long n, int *counter);
-void	ft_putnbr_un(unsigned long n, int *counter);
-void	ft_putchar(char c, int *counter);
-size_t	ft_strlen(const char *s);
-void	ft_puthex(unsigned long n, char con, int *counter);
-void	ft_putptr(unsigned long n, int *counter);
-void	ft_putstr(const char *s, int *counter);
-void	*ft_calloc(size_t nmemb, size_t size);
+int ft_printf(const char *s, ...);
+void ft_putnbr(long n, int *counter);
+void ft_putnbr_un(unsigned long n, int *counter);
+void ft_putchar(char c, int *counter);
+size_t ft_strlen(const char *s);
+void ft_puthex(unsigned long n, char con, int *counter);
+void ft_putptr(unsigned long n, int *counter);
+void ft_bzero(void *s, size_t n);
+void ft_putstr(const char *s, int *counter);
+void *ft_calloc(size_t nmemb, size_t size);
 
 #endif
