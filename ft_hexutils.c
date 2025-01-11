@@ -6,7 +6,7 @@
 /*   By: mohel-mo <mohel-mo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 06:07:23 by mohel-mo          #+#    #+#             */
-/*   Updated: 2025/01/11 10:26:37 by mohel-mo         ###   ########.fr       */
+/*   Updated: 2025/01/11 10:55:00 by mohel-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	ft_puthex(unsigned int n, char con, int *counter)
 	if (!num)
 		return ;
 	i = 0;
+	if (n == 0)
+		num[0] = '0';
 	while (n && i < 16)
 	{
 		num[i] = hex[n % 16];
