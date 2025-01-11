@@ -6,7 +6,7 @@
 /*   By: mohel-mo <mohel-mo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 06:07:32 by mohel-mo          #+#    #+#             */
-/*   Updated: 2025/01/08 03:53:20 by mohel-mo         ###   ########.fr       */
+/*   Updated: 2025/01/11 10:27:11 by mohel-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	ft_putnbr(long n, int *counter);
 void	ft_putnbr_un(unsigned long n, int *counter);
 void	ft_putchar(char c, int *counter);
 size_t	ft_strlen(const char *s);
-void	ft_puthex(unsigned long n, char con, int *counter);
+void	ft_puthex(unsigned int n, char con, int *counter);
+void	ft_puthexptr(unsigned long n, int *counter);
 void	ft_putptr(unsigned long n, int *counter);
 void	ft_putstr(const char *s, int *counter);
 void	*ft_calloc(size_t nmemb, size_t size);

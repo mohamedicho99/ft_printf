@@ -6,7 +6,7 @@
 /*   By: mohel-mo <mohel-mo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 06:07:23 by mohel-mo          #+#    #+#             */
-/*   Updated: 2025/01/11 09:53:18 by mohel-mo         ###   ########.fr       */
+/*   Updated: 2025/01/11 10:26:37 by mohel-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,21 @@ static void	wprefix(int *counter)
 {
 	write(1, "0x", 2);
 	*counter += 2;
+}
+
+static void	ft_strcpy(char *src, char *dst)
+{
+	int	i;
+
+	i = 0;
+	if (!src || !dst)
+		return ;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
 }
 
 void	ft_putptr(unsigned long n, int *counter)
@@ -51,21 +66,6 @@ void	ft_puthexptr(unsigned long n, int *counter)
 	while (num_len--)
 		ft_putchar(num[num_len], counter);
 	free(num);
-}
-
-static void	ft_strcpy(char *src, char *dst)
-{
-	int	i;
-
-	i = 0;
-	if (!src || !dst)
-		return ;
-	while (src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
 }
 
 void	ft_puthex(unsigned int n, char con, int *counter)
