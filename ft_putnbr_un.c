@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_putnbr_un(unsigned long n, int *counter)
+void	ft_putnbr_un(unsigned int n, int *counter)
 {
 	if (n > 9)
 	{

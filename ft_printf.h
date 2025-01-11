@@ -20,7 +20,7 @@
 
 int		ft_printf(const char *s, ...);
 void	ft_putnbr(long n, int *counter);
-void	ft_putnbr_un(unsigned long n, int *counter);
+void	ft_putnbr_un(unsigned int n, int *counter);
 void	ft_putchar(char c, int *counter);
 size_t	ft_strlen(const char *s);
 void	ft_puthex(unsigned int n, char con, int *counter);
