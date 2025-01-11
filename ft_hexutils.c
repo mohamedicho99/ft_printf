@@ -6,7 +6,7 @@
 /*   By: mohel-mo <mohel-mo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 06:07:23 by mohel-mo          #+#    #+#             */
-/*   Updated: 2025/01/08 03:52:55 by mohel-mo         ###   ########.fr       */
+/*   Updated: 2025/01/11 09:53:18 by mohel-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,31 @@ void	ft_putptr(unsigned long n, int *counter)
 		return ;
 	}
 	wprefix(counter);
-	ft_puthex(n, 'x', counter);
+	ft_puthexptr(n, counter);
+}
+
+void	ft_puthexptr(unsigned long n, int *counter)
+{
+	char	*num;
+	size_t	num_len;
+	int		i;
+	char	hex[17];
+
+	ft_strcpy("0123456789abcdef", hex);
+	num = ft_calloc(sizeof(char), 21);
+	if (!num)
+		return ;
+	i = 0;
+	while (n && i < 16)
+	{
+		num[i] = hex[n % 16];
+		n /= 16;
+		i++;
+	}
+	num_len = ft_strlen(num);
+	while (num_len--)
+		ft_putchar(num[num_len], counter);
+	free(num);
 }
 
 static void	ft_strcpy(char *src, char *dst)
@@ -44,7 +68,7 @@ static void	ft_strcpy(char *src, char *dst)
 	dst[i] = '\0';
 }
 
-void	ft_puthex(unsigned long n, char con, int *counter)
+void	ft_puthex(unsigned int n, char con, int *counter)
 {
 	char	*num;
 	size_t	num_len;

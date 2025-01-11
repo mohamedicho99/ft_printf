@@ -6,7 +6,7 @@
 /*   By: mohel-mo <mohel-mo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 06:07:01 by mohel-mo          #+#    #+#             */
-/*   Updated: 2025/01/08 03:51:51 by mohel-mo         ###   ########.fr       */
+/*   Updated: 2025/01/11 09:46:18 by mohel-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ static void	handle_pahex(char c, va_list args, int *counter)
 	if (c == 'x')
 	{
 		n = va_arg(args, unsigned int);
-		ft_puthex((unsigned long)n, 'x', counter);
+		ft_puthex((unsigned int)n, 'x', counter);
 	}
 	if (c == 'X')
 	{
 		n = va_arg(args, unsigned int);
-		ft_puthex((unsigned long)n, 'X', counter);
+		ft_puthex((unsigned int)n, 'X', counter);
 	}
 }
 
@@ -83,6 +83,8 @@ int	ft_printf(const char *s, ...)
 	int		counter;
 	int		i;
 
+	if (!s)
+		return (-1);
 	va_start(args, s);
 	counter = 0;
 	i = 0;
@@ -91,10 +93,7 @@ int	ft_printf(const char *s, ...)
 		if (s[i] == '%')
 		{
 			if (s[i + 1] == '\0')
-			{
-				ft_putchar('%', &counter);
-				return (1);
-			}
+				return (-1);
 			format(s[i + 1], args, &counter);
 			i++;
 		}
